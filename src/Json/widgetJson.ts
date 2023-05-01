@@ -1,0 +1,92 @@
+import { columnType, componentProps } from './proForm.d'
+export interface widgetItem{
+    title:string,
+    icon:string,
+    isProducting?:boolean,
+    defaultData:columnType | any
+}
+interface widgetJson{
+    [key: string]: widgetItem[]
+}
+export const widgetJson:widgetJson =  {
+    container:[
+        {
+            title:'栅格',
+            icon:'Grid',
+            isProducting:true,
+            defaultData:{}
+        },
+        {
+            title:'表格',
+            icon:'Grid',
+            isProducting:true,
+            defaultData:{}
+        },
+        {
+            title:'标签页',
+            icon:'Grid',
+            isProducting:true,
+            defaultData:{}
+        },
+        {
+            title:'卡片',
+            icon:'Grid',
+            isProducting:true,
+            defaultData:{}
+        }
+    ],
+    baseField:[
+        {
+            title:'单行输入',
+            icon:'Grid',
+            defaultData:componentProps['el-input']
+        },
+        {
+            title:'多行输入',
+            icon:'Grid',
+            isProducting:true,
+            defaultData:{}
+        },
+        {
+            title:'下拉选项',
+            icon:'Grid',
+            isProducting:true,
+            defaultData:{}
+        },
+    ],
+    seniorField:[
+        {
+            title:'图片',
+            icon:'Grid',
+            isProducting:true,
+            defaultData:{}
+        },
+        {
+            title:'文件',
+            icon:'Grid',
+            isProducting:true,
+            defaultData:{}
+        },
+        {
+            title:'富文本',
+            icon:'Grid',
+            isProducting:true,
+            defaultData:{}
+        },
+        {
+            title:'联级选择',
+            icon:'Grid',
+            isProducting:true,
+            defaultData:{}
+        },
+    ],
+    customization:[
+        {
+            title:'提示',
+            icon:'Grid',
+            isProducting:true,
+            defaultData:{}
+        }
+    ]
+}
+
