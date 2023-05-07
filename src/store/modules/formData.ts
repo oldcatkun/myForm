@@ -53,14 +53,6 @@ const useFormDataStore = defineStore('formData',() => {
     })
     //选中状态的item
     const activeItem = reactive<columnType>({prop:'',component:''})
-    //formData
-    // const formData = computed(()=>{
-    //     const obj:{[key:string]:any} = {}
-    //     columns.forEach((item:columnType)=>{
-    //         obj[item.prop]= item.default || ''
-    //     })
-    //     return obj
-    // })
     //改变选中item
     const changeActiveItem = (data:columnType) => {
         Object.assign(activeItem,deepClone(data))
@@ -82,6 +74,7 @@ const useFormDataStore = defineStore('formData',() => {
     //删除item
     const deleteItem = (index:number) => {
         columns.splice(index,1)
+        Object.assign(activeItem,{prop:'',component:'',index:-1})
     }
     //改变表单配置
     const changeFormOptions = (data:elFormProps) => {

@@ -37,7 +37,7 @@
 
 <script setup lang="ts">
 import ProForm from '@/components/proForm.vue'
-import Ace from './ace.vue' 
+import Ace from '@/components/ace.vue' 
 import { copy } from '@/utils/fun';
 import useFormDataStore from '@/store/modules/formData' 
 const {

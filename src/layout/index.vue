@@ -76,6 +76,7 @@ const handlerClick = (name:string) => {
                 display: flex;
                 padding: 0 20px;
                 .item{
+                    cursor: pointer;
                     text-align: center;
                     width: 100px;
                     &:hover{

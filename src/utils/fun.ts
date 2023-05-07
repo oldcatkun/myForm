@@ -15,8 +15,7 @@ export const debounce = (fun:Function,time:number=0) => {
 }
 //复制
 export const copy = (val:string) => {
-    let isSuccessRef = false
-    let input:any = document.createElement('input')
+    let input:any = document.createElement('textarea')
     input.value = val
     document.body.appendChild(input)
     input.select()

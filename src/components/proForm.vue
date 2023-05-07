@@ -32,19 +32,19 @@
         <div class="operate">
           <el-icon 
             color="#fff"
-            @click="moveItem('up',index)"
+            @click.stop="moveItem('up',index)"
           >
             <Top/>
           </el-icon>
           <el-icon 
             color="#fff"
-            @click="moveItem('down',index)"
+            @click.stop="moveItem('down',index)"
           >
             <Bottom/>
           </el-icon>
           <el-icon 
             color="#fff"
-            @click="deleteItem(index)"
+            @click.stop="deleteItem(index)"
           >
             <Delete/>
           </el-icon>

@@ -53,6 +53,10 @@ watch(()=>props.Json,()=>{
     setValue()
 })
 
+defineExpose({
+    getValue
+})
+
 
 </script>
 
