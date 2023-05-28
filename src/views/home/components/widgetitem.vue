@@ -24,9 +24,6 @@ const props = withDefaults(defineProps<{
 const handlerClick = () => {
     const str = (Date.now()+'').slice(8)
     addItem({...props.data.defaultData,
-        labelProps:{
-            label:props.data.defaultData?.prop + str
-        },
         prop:props.data.defaultData?.prop + str
     })
 }

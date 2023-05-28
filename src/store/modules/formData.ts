@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { computed, ref, reactive } from "vue";
 import { deepClone } from '@/utils/fun';
 import { elFormProps } from '@/Json/elFormJson'
-import { columnType, columnsType, componentProps } from '@/Json/proForm.d'
+import { columnType, columnsType } from '@/Json/proForm.d'
 import { ElMessage } from 'element-plus'
 //以json创建表单数据对象
 const createData = (columns:columnsType) => {
@@ -18,30 +18,34 @@ const useFormDataStore = defineStore('formData',() => {
         {
           prop:'name',
           component:'el-input',
+          componentName:'单行输入',
           default:'',
-          itemProps:{
-            type:'test',
-            placeholder:'',
-            clearable:false,
-            disabled:false
-          },
-          labelProps:{
-            label:'姓名'
-          }
+          type:'test',
+          placeholder:'',
+          clearable:false,
+          disabled:false,
+          label:'姓名',
+          labelWidth:'',
+          required: false,
+          requiredStr:'',
+          regex:'',
+          regexStr:''
         },
         {
           prop:'age',
           component:'el-input',
+          componentName:'单行输入',
           default:'',
-          itemProps:{
-            type:'test',
-            placeholder:'',
-            clearable:false,
-            disabled:false
-          },
-          labelProps:{
-            label:'年龄'
-          }
+          type:'test',
+          placeholder:'',
+          clearable:false,
+          disabled:false,
+          label:'年龄',
+          labelWidth:'',
+          required: false,
+          requiredStr:'',
+          regex:'',
+          regexStr:''
         }
     ])
     //表单配置
@@ -52,10 +56,10 @@ const useFormDataStore = defineStore('formData',() => {
         labelWidth: 120
     })
     //选中状态的item
-    const activeItem = reactive<columnType>({prop:'',component:''})
+    const activeItem = ref<columnType>({prop:'',component:''})
     //改变选中item
     const changeActiveItem = (data:columnType) => {
-        Object.assign(activeItem,deepClone(data))
+        activeItem.value = deepClone(data)
     }
     //添加item
     const addItem = (data:columnType) => {
@@ -74,7 +78,7 @@ const useFormDataStore = defineStore('formData',() => {
     //删除item
     const deleteItem = (index:number) => {
         columns.splice(index,1)
-        Object.assign(activeItem,{prop:'',component:'',index:-1})
+        activeItem.value = {prop:'',component:'',index:-1}
     }
     //改变表单配置
     const changeFormOptions = (data:elFormProps) => {
@@ -84,11 +88,7 @@ const useFormDataStore = defineStore('formData',() => {
     const changeItemOptions = (data:columnType) => {
         const index:any = data.index
         Object.assign(columns[index],data)
-        Object.assign(activeItem,data)
-    }
-    //导出json
-    const getJson = () => {
-      
+        activeItem.value = data       
     }
 
     return {
@@ -100,8 +100,7 @@ const useFormDataStore = defineStore('formData',() => {
         moveItem,
         deleteItem,
         changeFormOptions,
-        changeItemOptions,
-        getJson
+        changeItemOptions
     }
 })
 export default useFormDataStore

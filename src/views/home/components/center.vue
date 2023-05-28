@@ -40,20 +40,26 @@ import ProForm from '@/components/proForm.vue'
 import Ace from '@/components/ace.vue' 
 import { copy } from '@/utils/fun';
 import useFormDataStore from '@/store/modules/formData' 
+const store = useFormDataStore()
 const {
     columns,
     formOptions,
-    activeItem,
     moveItem,
     deleteItem,
     changeActiveItem,
-} = useFormDataStore()
+} = store
+const { activeItem } = toRefs(store)
 
 const dialogVisible = ref<boolean>(false)
 const Json = ref<string>('')
 const getJson = () => {
     dialogVisible.value = true
-    Json.value = JSON.stringify({columns,formOptions},null,2)
+    const newColumns = columns.map(item=>{
+        const obj = {...item}
+        delete obj.componentName
+        return obj
+    })
+    Json.value = JSON.stringify({columns:newColumns,formOptions},null,2)
 }
 </script>
 

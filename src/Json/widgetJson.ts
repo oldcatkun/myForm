@@ -39,19 +39,17 @@ export const widgetJson:widgetJson =  {
         {
             title:'单行输入',
             icon:'Grid',
-            defaultData:componentProps['el-input']
+            defaultData:componentProps['input']
         },
         {
             title:'多行输入',
             icon:'Grid',
-            isProducting:true,
-            defaultData:{}
+            defaultData:componentProps['textarea']
         },
         {
             title:'下拉选项',
             icon:'Grid',
-            isProducting:true,
-            defaultData:{}
+            defaultData:componentProps['select']
         },
     ],
     seniorField:[
@@ -89,4 +87,3 @@ export const widgetJson:widgetJson =  {
         }
     ]
 }
-
